@@ -1,5 +1,7 @@
 package br.com.alura.ecomart.chatbot.domain.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.alura.ecomart.chatbot.infra.openai.DadosRequisicaoChatCompletion;
@@ -16,5 +18,9 @@ public class ChatbotService {
         String promptSistema = "Você é um chatbot de atendimento a clientes de um ecommerce e deve responder apenas perguntas relacionadas ao ecommerce. ";
         DadosRequisicaoChatCompletion dados = new DadosRequisicaoChatCompletion(promptSistema, pergunta);
         return openAIClient.enviarRequisicaoChatCompletion(dados);
+    }
+
+    public List<String> carregarHistorico() {
+        return openAIClient.carregarHistoricoDeMensagens();
     }
 }

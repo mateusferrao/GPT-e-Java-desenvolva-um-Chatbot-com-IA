@@ -5,6 +5,7 @@ import br.com.alura.ecomart.chatbot.web.dto.PerguntaDto;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
@@ -16,7 +17,9 @@ public class ChatController {
     private final ChatbotService chatbotService;
 
     @GetMapping
-    public String carregarPaginaChatbot() {
+    public String carregarPaginaChatbot(Model model) {
+        var mensagens = chatbotService.carregarHistorico();
+        model.addAttribute("historico", mensagens);
         return PAGINA_CHAT;
     }
 
