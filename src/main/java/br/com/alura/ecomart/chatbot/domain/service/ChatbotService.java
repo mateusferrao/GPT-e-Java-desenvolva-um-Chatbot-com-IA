@@ -23,4 +23,8 @@ public class ChatbotService {
     public List<String> carregarHistorico() {
         return openAIClient.carregarHistoricoDeMensagens();
     }
+
+    public void limparHistorico() {
+        openAIClient.apagarThread();
+    }
 }
